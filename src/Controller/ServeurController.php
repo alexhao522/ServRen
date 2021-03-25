@@ -28,20 +28,20 @@ class ServeurController extends AbstractController
     /**
      * @Route("/serveur", name="serveur")
      */
-    public function index(): Response
+    public function index(Request $request, EntityManagerInterface $manager,SessionInterface $session): Response
     {
         $vs=$session->get('userid');
 
             if($vs == 0){
                 return $this->render('serveur/index.html.twig', [
-                    'controller_name' => 'page de Login',
+                    'controller_name' => 'ServeurController',
                 ]);
             }
             else{
-                $utilisateur = $manager ->getRepository(Utilisateurs::class)->findOneBy(array('id' => $vs));
+                $Utilisateur = $manager ->getRepository(Utilisateur::class)->findOneBy(array('id' => $vs));
                 return $this->render('serveur/reponse.html.twig', [
                     'controller_name' => 'ServeurController',
-                    'utilisateur' => $utilisateur
+                    'Utilisateur' => $Utilisateur
     
                 ]);
             }
@@ -50,7 +50,7 @@ class ServeurController extends AbstractController
     /**
      * @Route("/signin", name="/signin")
      */
-    public function utilisateurs(Request $request, EntityManagerInterface $manager,SessionInterface $session): Response
+    public function Utilisateur(Request $request, EntityManagerInterface $manager,SessionInterface $session): Response
     {
 
         return $this->render('serveur/signin.html.twig', [
@@ -66,19 +66,19 @@ class ServeurController extends AbstractController
     {
         $Login= $request->request->get('email');
         $Password= $request->request->get('password');
-        $utilisateur = $manager ->getRepository(utilisateurs::class)->findOneBy(array('email' => $Login,'password' => $Password));
+        $Utilisateur = $manager ->getRepository(Utilisateur::class)->findOneBy(array('email' => $Login,'password' => $Password));
         if ($Login=="admin")
             $message="Vous êtes administrateur";
         else
             $message="Vous êtes utilisateur";
 
-        if($utilisateur != NULL){
-            $val =$utilisateur->getid();
+        if($Utilisateur != NULL){
+            $val =$Utilisateur->getid();
             $session->set('userid',$val);
             return $this->render('serveur/reponse.html.twig', [
                 'message' => $message,
                 'controller_name' => 'ServeurController',
-                'utilisateur' => $utilisateur
+                'Utilisateur' => $Utilisateur
             ]);
         }
         else{
@@ -95,7 +95,7 @@ class ServeurController extends AbstractController
         $recupEmail=$request->request->get('email2');
         $recupPassword=$request->request->get('password');
         
-        $User = new Utilisateurs();
+        $User = new Utilisateur();
 		$User->setNom($recupNom);
 		$User->setPrenom($recupPrenom);
         $User->setEmail($recupEmail);
@@ -148,7 +148,7 @@ class ServeurController extends AbstractController
     {
             $userid=$session->get('userid');
             if ($userid>0){
-                $listUser=$manager->getRepository(signin::class)->findAll();
+                $listUser=$manager->getRepository(Utilisateur::class)->findAll();
 
             return $this->render('serveur/listeUser.html.twig', [
                 'listUser' => $listUser
