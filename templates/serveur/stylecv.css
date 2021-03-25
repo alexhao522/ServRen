@@ -1,0 +1,91 @@
+body{
+background : #C3F3FA;
+font-family : "Comic Sans MS";
+margin-left : 130px;
+margin-right : 130px;
+}
+
+#banniere{
+  height : auto;
+  max-width : 100%;
+  width : 100%;
+}
+
+
+
+#section{
+text-align: center;
+background : #759ff8;
+border-radius: 20px;
+
+}
+
+.header{
+border-radius: 20px;
+background-image:url(paysage.png);
+}
+
+.inter{
+margin-top : 15px;
+line-height : 50%;
+
+}
+
+.inter1{
+margin-top : 15px;
+line-height : 200%;
+
+}
+
+#footer{
+  margin-top:50px;
+  background : #F0694C;
+  border-radius: 20px;
+  text-align : center;
+
+}
+
+.align{
+  text-align : center;
+
+}
+
+.margin{
+  margin : 50%;
+
+}
+
+.lign{
+	margin-top:25%;
+
+}
+
+.acdc{
+  width:100px;
+  height:100%;
+  display:block;
+
+}
+
+.billard{
+  width:50%;
+  height:50%;
+  display:block;
+}
+
+.sport{
+  width:50%;
+  height:50%;
+  display:block;
+
+}
+
+.voiture{
+  width:50%;
+  height:50%;
+  display:block;
+}
+
+.fff{
+	margin-left : 20 px;
+}

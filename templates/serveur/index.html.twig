@@ -1,175 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ServeurController!{% endblock %}
+{% block title %}Hello MonController!{% endblock %}
 
 {% block body %}
+
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/serveur">Login
+          <span class="sr-only">(current)</span>
+        </a>
+</nav>
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Connexion</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/renxi/ServRen/src/Controller/ServeurController.php'|file_link(0) }}">src/Controller/ServeurController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/renxi/ServRen/templates/serveur/index.html.twig'|file_link(0) }}">templates/serveur/index.html.twig</a></code></li>
-    </ul>
-</div>
-<html>
-
-<head>
-	<meta charset="utf-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="stylecv.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-</head>
-
-
-
-<body>
-<header>
-
-
-	<div  class="col-md-12 header">
-		<div class="row">
-			<!--<img id ="banniere" src="paysage.jpg">-->
-				<div class="col-md-6 inter">
-					<h1>REN Xianhao</h1>
-		   			<p>Né le 22/05/1999</p>
-		    		<p>15 rue des Thermes Romains</p>
-				</div>
-				<div class="col-md-6 inter1">
-					<i class="fa fa-cloud"></i> renxianhaofr@126.com <br>
-					<i class="fa fa-address-book" aria-hidden="true"> 06 75 54 14 78</i> <br>
-					<i class="fa fa-linkedin" aria-hidden="true"></i> mon compte linkedin : renxianhaofr@126.com https://www.linkedin.com/in/%E6%98%BE%E8%B1%AA-%E4%BB%BB-9023b7198
-				</div>
-			<br><br>
-		</div>
-	</div>
-
-
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Bienvenue !</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarColor02">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="CV.html">CV<span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="formation.html">Formations</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="expérience.html">Expérience</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="langue.html">Langues</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="loisir.html">Loisir</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="snake.html">Snake</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="contact.html">Contact</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-
-
-</header>
-
-
-	<div class="container"><br><br>
-	
-		
-
-		<div class="row">
-			<div class="col-md-12" id="section"><h1>Formations</h1></div>
-		</div>
-		<br>
-		<br>
-		<div class="row formation">
-		  <div class="col-md-8">2014-2017</div>
-	      <div class="col-md-4">Lycée de l’université MUC Pékin / Baccalauréat scientifique : sciences, mathématiques, anglais, chinois / Note au gaokao : 514</div>
-	      <div class="col-md-8">2017-2018</div>
-	      <div class="col-md-4">C.U.E.B. Pékin  Licence en économie : français, mathématiques, économie</div>
-	      <div class="col-md-8">2018-2020</div>
-	      <div class="col-md-4">France IUT de Roanne - DUT RT</div> 
-		<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11077.790505095234!2d4.0737974!3d46.0421691!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x86f6a14095558a58!2sIUT%20de%20Roanne!5e0!3m2!1sfr!2sfr!4v1579097603687!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>	</div>
-		<br><br>
-		
-		
-		<hr>
-		
-		
-		<div class="row">
-			<div class="col-md-12" id="section"><h1> Expériences </h1></div>
-		</div>
-		<br>
-		<br>
-		<div class="row">
-        <div class="col-md-8">Février 2018</div>
-        <div class="col-md-4">Aide au orphelinat de Chaoyang</div>
-		<div class="col-md-8">Juillet 2017</div>
-		<div class="col-md-4">Fais des investigations dans les régions peu développées en Chine pour enquêter la situation courante de l’eau potable.</div>
-		</div>
-      <hr>
-		
-		
-		<div class="row">
-				<div class="col-md-12" id="section"><h1> Langues </h1></div>
-			</div>
-			<br>
-			<br>
-			<div class="row formation">
-		  <div class="col-md-8">Anglais</div>
-	      <div class="col-md-4">courant</div>
-	      <div class="col-md-8">Français</div>
-	      <div class="col-md-4">intermédiaire</div>
-	      <div class="col-md-8">Chinois</div>
-	      <div class="col-md-4">langue maternelle</div>
-		</div>
-		<br><br>
-		  <hr>
-		
-		
-		<div class="row">
-				<div class="col-md-12" id="section"><h1> Loisirs </h1></div>
-			</div>
-			<br>
-			<br>
-			<div class="row">
-			<div class="col-md-8">Sport</div>
-			<div class="col-md-4">football，basketball, natation, Taekwondo, karaté</div>
-			<div class="col-md-8">Autre</div>
-			<div class="col-md-4">Musique :Guzheng (l’instrument de musique national de Chine),chorale, lecteur, musées, voyages</div>
-			</div>
-		  <hr>
-	
-	  
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
- </body>
-  
-  
-  <footer id="footer">
-		<div class="row">
-      <div class ="col-rm-12 align">
-        <div class="fff">N'hesitez pas a me contacter : renxianhaofr@126.com</div>
-        
-      </div>
+<form action="/login" method="POST">
+  <fieldset>
+    <div class="form-group">
+      <label for="exampleInputName2">Email</label>
+      <input type="Name" class="form-control" id="email" name="email"  placeholder="entrer un mail">
     </div>
-  </footer>
- </html>
-
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+    </div>
+     </fieldset>
+     <button type="submit" class="btn btn-primary">Envoyer</button>
+</form>
+  
+</div>
 {% endblock %}
