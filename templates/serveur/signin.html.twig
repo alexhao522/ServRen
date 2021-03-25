@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sign in{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <li class="nav-item">
+          <a class="nav-link" href="/deconnexion">Déconnexion</a>
+        </li>
+        <a class="nav-link" href="/serveur">Login
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+  </div>
+</nav>
+
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="stylecv.css">
+		<title>Sign in</title>
+
+	
+	<div class="container"><br><br>
+
+		<div class="row">
+			<div class="col-md-12"><h1>Inscription</h1></div>
+		</div>
+	
+
+	<form method="POST" enctype="multipart/form-data" action="/signin">
+		<fieldset>
+			<div class="form-group">
+				<label for="exampleInputName2">Email</label>
+				<input type="Name" class="form-control" id="email2" name="email2"  placeholder="entrer un mail">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputName2">Nom</label>
+				<input type="Name" class="form-control" id="nom" name="nom"  placeholder="entrer un Nom">
+			</div>
+			<div class="form-group">
+			<label for="exampleInputName1">prénom</label>
+			<input type="Name" class="form-control" id="prenom" name="prenom"  placeholder="entrer un prénom">
+			</div>
+			<div class="form-group">
+			<label for="exampleInputPassword1">Password</label>
+			<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+			</div>
+			<button type="reset" name="reset" >Reset</button>
+			<button type="submit" class="btn btn-primary">Envoyer</button>
+		</fieldset>
+	</form>
+</div>
+
+		
+	{#	<form enctype="multipart/form-data" method="post" action="index2.html">
+			<div>
+				<label for="nom">Nom:</label>
+				<input id="nom" name="nom" type="text" value="votre nom d'utilisateur" maxlength="6"/>
+			</div>
+			
+			<div>
+				<label for="prénom">Prénom:</label>
+				<input id="prénom" name="prénom" type="text" value="votre prénom d'utilisateur" maxlength="6"/>
+			</div>
+			
+			<div>
+				<label for="pwd">mdp:</label>
+				<input id="pwd" name="pwd" type="password" value="1234" maxlength="20"/>
+			</div>
+			
+			<div>
+				<label for="sex">Civilité:</label>
+				<input id="sex" name="sex" type="radio" value="homme" /> M.
+				<input id="sex" name="sex" type="radio" value="femme" checked="true" /> Mme.
+			</div>
+			
+			<div>
+				
+				<label for="date">date de naissance:</label>
+				<input id="date" name="date" type="date" />	
+			</div>
+		
+			<div>
+				
+				<label for="date">date:</label>
+				<select id="year" name="year">
+					<option>1998</option>
+					<option>1999</option>
+					<option>2000</option>
+					<option>2001</option>
+					<option>2002</option>
+				</select>
+				
+				<label for="date">plus:</label>
+				<select id="year" name="year">
+					<option>moins de 1998</option>
+					<option selected="true">2021</option>
+				</select>
+				
+			</div>
+			
+			<div>
+				
+				<input id="submit" name="submit" type="submit" />
+				<input id="reset" name="reset" type="reset" />
+				
+			</div>
+	
+		</form>
+
+	#}
+   
+{% endblock %}

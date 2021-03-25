@@ -30,44 +30,85 @@ class ServeurController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('serveur/index.html.twig', [
+        $vs=$session->get('userid');
+
+            if($vs == 0){
+                return $this->render('serveur/index.html.twig', [
+                    'controller_name' => 'page de Login',
+                ]);
+            }
+            else{
+                $utilisateur = $manager ->getRepository(Utilisateurs::class)->findOneBy(array('id' => $vs));
+                return $this->render('serveur/reponse.html.twig', [
+                    'controller_name' => 'ServeurController',
+                    'utilisateur' => $utilisateur
+    
+                ]);
+            }
+    }
+
+    /**
+     * @Route("/signin", name="/signin")
+     */
+    public function utilisateurs(Request $request, EntityManagerInterface $manager,SessionInterface $session): Response
+    {
+
+        return $this->render('serveur/signin.html.twig', [
             'controller_name' => 'ServeurController',
         ]);
     }
 
-    /**
-     * @Route("/form", name="form")
-     */
-    public function form(): Response
-    {
-        return $this->render('serveur/sign in.html.twig', [
-            'controller_name' => 'ServeurController',
-        ]);
-    }
 
     /**
-     * @Route("/Utilisateur", name="Utilisateur")
+     * @Route("/login", name="/login")
      */
-    public function formUtilisateur(Request $request): Response
+    public function login(Request $request, EntityManagerInterface $manager,SessionInterface $session): Response
     {
-        $login = $request -> request -> get("login");
-        $password = $request -> request -> get("password");
-
-        if ($login=="admin")
+        $Login= $request->request->get('email');
+        $Password= $request->request->get('password');
+        $utilisateur = $manager ->getRepository(utilisateurs::class)->findOneBy(array('email' => $Login,'password' => $Password));
+        if ($Login=="admin")
             $message="Vous êtes administrateur";
         else
             $message="Vous êtes utilisateur";
 
-        return $this->render('serveur/reponse.html.twig', [
-            'message' => $message,
-            'controller_name' => 'ServeurController',
-        ]);
+        if($utilisateur != NULL){
+            $val =$utilisateur->getid();
+            $session->set('userid',$val);
+            return $this->render('serveur/reponse.html.twig', [
+                'message' => $message,
+                'controller_name' => 'ServeurController',
+                'utilisateur' => $utilisateur
+            ]);
+        }
+        else{
+            $session->set('userid',0);
+            return $this->redirectToRoute('serveur');
+            
+        }
+    }
+
+    public function signin(Request $request, EntityManagerInterface $manager,SessionInterface $session): Response
+    {
+        $recupNom=$request->request->get('nom');
+        $recupPrenom=$request->request->get('prenom');
+        $recupEmail=$request->request->get('email2');
+        $recupPassword=$request->request->get('password');
+        
+        $User = new Utilisateurs();
+		$User->setNom($recupNom);
+		$User->setPrenom($recupPrenom);
+        $User->setEmail($recupEmail);
+        $User->setPassword($recupPassword);
+        $manager->persist($User);
+		$manager->flush();
+     
+        return $this->redirectToRoute('listeUser');
     }
 
 
 
-
-    public function majEtudiant(Request $request, EntityManagerInterface $manager,SessionInterface $session): Response
+    /**public function majEtudiant(Request $request, EntityManagerInterface $manager,SessionInterface $session): Response
        // LoggerInterface $logger.Request $request.EntityManagerInterface $manager): Response
 	//Récupération des données saisies
 	{
@@ -77,7 +118,6 @@ class ServeurController extends AbstractController
 		$adresse=$request->request->get("adresse");
 		$dateNaissance=$request->request->get("datenaissance");
 		$id-$request->request->get("Id");
-		$mode=$request->request->get("mode");
 		
 		if ($nom == "admin")
 			$message = "vous être admin";
@@ -89,7 +129,7 @@ class ServeurController extends AbstractController
 	//$objFormation 
 	
 	// mise à jour de l'objet
-	if ($mode=="Insérer")
+	if ($mode == "Insérer")
 	// Création d'un objet étudiant
 	$monEtudiant = new Etudiant();
 	else 
@@ -98,29 +138,29 @@ class ServeurController extends AbstractController
 	$monEtudiant->setNom($nom);
 	$monEtudiant->setPrenom($prenom);
 	
-	$logger->info("xxxxxxxxxxxxxxx");
-	
-	// Affiche la liste de tous les etudiants
-		public function listeEtudiant(EntityManagerInterface $manager):Response
-		{
-	
-		$mesEtudiant = $manager -> getRepository (Etudiant::class) -> findAll();
-		return $this -> render ('annuaire/liste_etudiants.html.twig',
-        ['etudiant' => $mesEtudiant] );
-		}
+*/
 
-		
-		public function listeInfos(Request $request,
-		EntityManagerInterface $manager)
-		{
-			$listeInfos = $manager -> getRepository (Infos::class) -> findAll();
-			
-			return $this -> render('server/liste.html.twig' , 
-            ['listeInfos' => $listeInfos] );
-		}
-		
+	       
+    /**
+     * @Route("/listeUser", name="listeUser")
+     */
+    public function listeUser(Request $request, EntityManagerInterface $manager,SessionInterface $session): Response
+    {
+            $userid=$session->get('userid');
+            if ($userid>0){
+                $listUser=$manager->getRepository(signin::class)->findAll();
 
-        public function majFichier(Request $request,EntityManagerInterface $manager, SessionInterface $session):Response
+            return $this->render('serveur/listeUser.html.twig', [
+                'listUser' => $listUser
+            ]);
+            }
+            else{
+                return new Response("Vous n'êtes pas connecté");
+            }
+    }
+
+
+     /*   public function majFichier(Request $request,EntityManagerInterface $manager, SessionInterface $session):Response
         $utilisateur=$this->utilisateurConnecte ($manager, $session);
 
         if ($utilisateur){
@@ -176,6 +216,15 @@ class ServeurController extends AbstractController
 
 
 
-        }
+        }*/
+    /**
+     * @Route("/deconnexion", name="deconnexion")
+     */
+    public function deconnexion(Request $request, EntityManagerInterface $manager,SessionInterface $session): Response
+    {
+            $session->clear();
+            return $this->redirectToRoute('mon');    
+    }
+
 
 }
